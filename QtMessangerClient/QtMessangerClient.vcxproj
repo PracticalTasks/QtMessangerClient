@@ -99,15 +99,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="RegForm.cpp" />
     <QtRcc Include="QtMessangerClient.qrc" />
+    <QtUic Include="AuthentWindow.ui" />
     <QtUic Include="QtMessangerClient.ui" />
     <QtMoc Include="QtMessangerClient.h" />
+    <ClCompile Include="AuthentWindow.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="FilesWorker.cpp" />
     <ClCompile Include="QtMessangerClient.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="RegForm.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="RegForm.h" />
+    <QtMoc Include="AuthentWindow.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="FilesWorker.h" />
   </ItemGroup>

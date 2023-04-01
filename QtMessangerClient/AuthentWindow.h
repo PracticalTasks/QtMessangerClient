@@ -3,6 +3,8 @@
 #include <QMainWindow>
 #include "ui_AuthentWindow.h"
 #include "RegForm.h"
+#include "FileSystem.h"
+#include "QtMessangerClient.h"
 
 class AuthentWindow : public QMainWindow
 {
@@ -15,13 +17,18 @@ public:
 private:
 	Ui::AuthentWindowClass ui;
 	std::unique_ptr<RegForm> regForm;
+	std::unique_ptr<FileSystem> fileSystem;
+	std::unique_ptr<QtMessangerClient> messangerClient;
+
+	QString filePath = "regInfo.txt";
 
 public slots:
-	void on_clickedRegFormOK();
+	void on_clickedRegFormOK(QString loginStr, QString passwordStr);
 	void on_clickedRegFormCancel();
-	void on_destroyedRegForm();
 
 private slots:
 	void on_regLinkButton();
+	void on_signInButton();
+	
 
 };

@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>330</height>
+    <width>512</width>
+    <height>402</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>451</width>
-    <height>330</height>
+    <width>512</width>
+    <height>402</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>451</width>
-    <height>330</height>
+    <width>512</width>
+    <height>402</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -75,30 +75,30 @@
       <item>
        <widget class="QWidget" name="widget" native="true">
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="1">
+         <item row="1" column="0">
+          <widget class="QPushButton" name="regButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Зарегистрировать</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
           <widget class="QWidget" name="widget_2" native="true">
            <property name="enabled">
             <bool>true</bool>
            </property>
            <layout class="QFormLayout" name="formLayout_2">
-            <item row="5" column="0">
-             <layout class="QFormLayout" name="formLayout"/>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="loginLineEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>14</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_3">
               <property name="font">
@@ -111,8 +111,8 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="passwordLineEdit">
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="loginLineEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -138,8 +138,8 @@
               </property>
              </widget>
             </item>
-            <item row="7" column="1">
-             <widget class="QPushButton" name="cancelButton">
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="passwordLineEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -148,16 +148,34 @@
               </property>
               <property name="font">
                <font>
-                <pointsize>11</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
-              <property name="text">
-               <string>Отмена</string>
+              <property name="inputMethodHints">
+               <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
               </property>
              </widget>
             </item>
-            <item row="7" column="0">
-             <widget class="QPushButton" name="regButton">
+            <item row="6" column="0">
+             <layout class="QFormLayout" name="formLayout"/>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_5">
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>Повторите пароль</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLineEdit" name="passwordLineEdit_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -166,31 +184,60 @@
               </property>
               <property name="font">
                <font>
-                <pointsize>11</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
-              <property name="text">
-               <string>Зарегистрировать</string>
+              <property name="inputMethodHints">
+               <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="cursorMoveStyle">
+               <enum>Qt::LogicalMoveStyle</enum>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
-            <item row="6" column="0" colspan="2">
-             <spacer name="verticalSpacer">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
+            <item row="8" column="0" colspan="2">
+             <widget class="QLabel" name="messageLabel">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::MinimumExpanding</enum>
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+               </font>
               </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
+              <property name="text">
+               <string/>
               </property>
-             </spacer>
+             </widget>
             </item>
            </layout>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="cancelButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>11</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Отмена</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -205,7 +252,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>451</width>
+     <width>512</width>
      <height>26</height>
     </rect>
    </property>

@@ -106,7 +106,7 @@
     <QtMoc Include="QtMessangerClient.h" />
     <ClCompile Include="AuthentWindow.cpp" />
     <ClCompile Include="Connection.cpp" />
-    <ClCompile Include="FilesWorker.cpp" />
+    <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="QtMessangerClient.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="RegForm.ui" />
@@ -115,7 +115,7 @@
     <QtMoc Include="RegForm.h" />
     <QtMoc Include="AuthentWindow.h" />
     <ClInclude Include="Connection.h" />
-    <ClInclude Include="FilesWorker.h" />
+    <ClInclude Include="FileSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

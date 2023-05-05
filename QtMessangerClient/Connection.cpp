@@ -10,12 +10,19 @@ Connection::Connection()
 
 }
 
+void Connection::send(std::string authData)
+{
+	write(*serverSock.get(), buffer(authData));
+}
+
 void Connection::connectHandler(const boost::system::error_code& err)
 {
 	if (!err)
 	{
-		std::cout << "Connect is successful!\n";
-
-		write(*serverSock.get(), buffer(userName + '@' + userPassword));
+		serverConnect = true;
+		boost::system::error_code err_code;
+		char readBuffer[0xFF]{ 0 };
+		serverSock->read_some(buffer(readBuffer), err_code);
+		regDataStr = readBuffer;
 	}
 }

@@ -1,8 +1,9 @@
 #include "RegForm.h"
 #include "AuthentWindow.h"
 
-RegForm::RegForm(QWidget *parent)
+RegForm::RegForm(Connection* _connection, QWidget *parent)
 	: QMainWindow(parent)
+	, connection(_connection)
 {
 	ui.setupUi(this);
 

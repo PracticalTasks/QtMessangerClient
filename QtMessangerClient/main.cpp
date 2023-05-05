@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     AuthentWindow authentWindow;
     authentWindow.show();
-    //QtMessangerClient w;
+    //QtMessangerClient w("CMATPOCAB:xxx");
     //w.show();
     return a.exec();
 }

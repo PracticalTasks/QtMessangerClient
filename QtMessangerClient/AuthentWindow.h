@@ -5,6 +5,7 @@
 #include "RegForm.h"
 #include "FileSystem.h"
 #include "QtMessangerClient.h"
+#include "Connection.h"
 
 class AuthentWindow : public QMainWindow
 {
@@ -19,8 +20,12 @@ private:
 	std::unique_ptr<RegForm> regForm;
 	std::unique_ptr<FileSystem> fileSystem;
 	std::unique_ptr<QtMessangerClient> messangerClient;
+	std::unique_ptr<Connection> connection;
 
 	QString filePath = "regInfo.txt";
+
+private:
+	void setServerInfo();
 
 public slots:
 	void on_clickedRegFormOK(QString loginStr, QString passwordStr);

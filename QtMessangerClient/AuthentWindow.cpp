@@ -48,38 +48,50 @@ void AuthentWindow::on_regLinkButton()
 void AuthentWindow::on_signInButton()
 {
 	setServerInfo();
-	QString loginStr = ui.loginLineEdit->text();
+	QString userData = ui.loginLineEdit->text();
 	//Если не ввели логин
-	if (loginStr.isEmpty())
+	if (userData.isEmpty())
 	{
 		ui.messagelabel->setText("Введите логин");
 		return;
 	}
-	
-	//Создаём объект типа QString из регист. данных полученных от сервера при соеденении 
-	QString regData(QString::fromStdString(connection->regDataStr));
 
-	//Проверяем есть ли данные пользователя(логин оканчивается ':')
-	qsizetype currentIdx = regData.indexOf(loginStr + ':');
-	qsizetype nextIdx = 0;
-	if (currentIdx != -1)
+	//Подготавливаем запрос для сервера на проверку авторизации
+	userData.append(':' + ui.passwordLineEdit->text() + '@' + static_cast<char>(0x02));
+	connection->send(userData.toStdString());
+	if (connection->recievResponse())
 	{
-		//Увеличеваем текущий idx на количество символов в логине + ':'
-		currentIdx += loginStr.size() + 1;
-		//После ':' находится пароль и заканчивается '@'
-		nextIdx = regData.indexOf('@', currentIdx);
-		nextIdx -= currentIdx;
-		QString passwordStr = regData.sliced(currentIdx, nextIdx);
-
-		if (passwordStr == ui.passwordLineEdit->text())
-		{
-			hide();
-			messangerClient = std::make_unique<QtMessangerClient>(connection->regDataStr.c_str());
-			messangerClient->show();
-			return;
-		}
+		hide();
+		messangerClient = std::make_unique<QtMessangerClient>(connection->userLogin.c_str());
+		messangerClient->show();
+		return;
 	}
 
 	ui.messagelabel->setText("Не верный логин или пароль");
+	//Создаём объект типа QString из регист. данных полученных от сервера при соеденении 
+	//QString regData(QString::fromStdString(connection->userLogin));
+
+	//Проверяем есть ли данные пользователя(логин оканчивается ':')
+	//qsizetype currentIdx = regData.indexOf(loginStr + ':');
+	//qsizetype nextIdx = 0;
+	//if (currentIdx != -1)
+	//{
+	//	//Увеличеваем текущий idx на количество символов в логине + ':'
+	//	currentIdx += loginStr.size() + 1;
+	//	//После ':' находится пароль и заканчивается '@'
+	//	nextIdx = regData.indexOf('@', currentIdx);
+	//	nextIdx -= currentIdx;
+	//	QString passwordStr = regData.sliced(currentIdx, nextIdx);
+
+	//	if (passwordStr == ui.passwordLineEdit->text())
+	//	{
+	//		hide();
+	//		messangerClient = std::make_unique<QtMessangerClient>(connection->userLogin.c_str());
+	//		messangerClient->show();
+	//		return;
+	//	}
+	//}
+
+	//ui.messagelabel->setText("Не верный логин или пароль");
 
 }

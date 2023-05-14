@@ -15,12 +15,12 @@ class QtMessangerClient : public QWidget
     Q_OBJECT
 
 public:
-    QtMessangerClient(QString regData, QWidget *parent = nullptr);
+    QtMessangerClient(QString userLogins, QWidget *parent = nullptr);
     ~QtMessangerClient();
 
 private:
     void addUsers(QStringList contacstList);
-    QStringList extractUserFromData(QString data);
+    QStringList extrLoginsFromData(QString data);
 
 private:
     Ui::QtMessangerClientClass *ui;

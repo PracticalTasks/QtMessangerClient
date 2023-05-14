@@ -5,9 +5,9 @@ QtMessangerClient::QtMessangerClient(QString regData, QWidget *parent)
     , ui(new Ui::QtMessangerClientClass())
 {
     ui->setupUi(this);
-    addUsers(extractUserFromData(regData));
+    addUsers(extrLoginsFromData(regData));
 
-    connection = std::make_unique<Connection>();
+    //connection = std::make_unique<Connection>();
     connect(ui->pushButton_send, &QPushButton::pressed, [this]()
         {
             
@@ -44,16 +44,17 @@ void QtMessangerClient::addUsers(QStringList contactsList)
 
 }
 
-QStringList QtMessangerClient::extractUserFromData(QString data)
+QStringList QtMessangerClient::extrLoginsFromData(QString data)
 {
     QStringList contactsList;
     int currentIdx = 0;
-    int nextIdx = data.indexOf(':');
+    int nextIdx = data.indexOf('@');
     while (nextIdx != -1)
     {
         contactsList << data.sliced(currentIdx, (nextIdx - currentIdx));
-        currentIdx = data.indexOf('@', nextIdx) + 1;
-        nextIdx = data.indexOf(':', currentIdx);
+        ++nextIdx;
+        currentIdx = nextIdx ;
+        nextIdx = data.indexOf('@', currentIdx);
     }
 
     return contactsList;

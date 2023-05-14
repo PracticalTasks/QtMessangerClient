@@ -11,10 +11,11 @@ class Connection
 public:
 	Connection();
 	void send(std::string authData);
+	bool recievResponse();
 
 public:
 	bool serverConnect = false;
-	std::string regDataStr;
+	std::string userLogin;
 
 private:
 	void connectHandler(const boost::system::error_code& err);

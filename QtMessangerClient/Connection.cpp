@@ -15,14 +15,26 @@ void Connection::send(std::string authData)
 	write(*serverSock.get(), buffer(authData));
 }
 
+bool Connection::recievResponse()
+{
+	unsigned char buff[0x1]{};
+	boost::system::error_code err_code;
+	serverSock->read_some(buffer(buff), err_code);
+	
+	if (buff[0] == 0xEF)
+		return true;
+
+	return false;
+}
+
 void Connection::connectHandler(const boost::system::error_code& err)
 {
 	if (!err)
 	{
 		serverConnect = true;
 		boost::system::error_code err_code;
-		char readBuffer[0xFF]{ 0 };
-		serverSock->read_some(buffer(readBuffer), err_code);
-		regDataStr = readBuffer;
+		char readBuffer[0xFF]{};
+		serverSock->read_some(buffer((readBuffer)), err_code);
+		userLogin = readBuffer;
 	}
 }
